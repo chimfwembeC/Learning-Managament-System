@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('assignment_submissions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('assignment_id');
+            $table->unsignedBigInteger('student_id');
+            $table->string('file_path');
+            $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
-        });
+        });        
     }
 
     /**

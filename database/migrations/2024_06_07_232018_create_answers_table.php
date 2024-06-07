@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('question_id');
+            $table->text('answer_text');
+            $table->boolean('is_correct')->default(false);
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->timestamps();
-        });
+        });        
     }
 
     /**
