@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('content');
             $table->foreign('post_id')->references('id')->on('forum_posts')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });        
     }
