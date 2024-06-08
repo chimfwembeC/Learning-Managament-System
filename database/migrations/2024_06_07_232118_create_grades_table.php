@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('submission_id');
             $table->float('grade');
             $table->foreign('submission_id')->references('id')->on('submissions')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });        
     }

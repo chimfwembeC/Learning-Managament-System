@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['admin', 'teacher', 'student']);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
 
@@ -43,7 +44,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('users');        
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }

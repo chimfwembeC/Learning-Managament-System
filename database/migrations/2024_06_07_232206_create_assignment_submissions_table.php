@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('file_path');
             $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });        
     }
