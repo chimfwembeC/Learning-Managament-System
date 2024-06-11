@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quizze;
 use Illuminate\Http\Request;
-
+use Inertia\Inertia;
 class QuizzeController extends Controller
 {
     /**
@@ -13,6 +13,11 @@ class QuizzeController extends Controller
     public function index()
     {
         //
+        $quizzes = Quizze::latest()->get();
+
+        return Inertia::render("Admin/Quizzes/Index",[
+            'quizzes' => $quizzes,
+        ]);
     }
 
     /**
@@ -29,6 +34,20 @@ class QuizzeController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' =>'required',
+            'description' =>'required',
+        ]);
+
+        $quizze = Quizze::create([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        return response()->json([
+            'message' => 'quiz created successfully',
+            'quiz' => $quizze
+        ]);
     }
 
     /**
@@ -53,6 +72,20 @@ class QuizzeController extends Controller
     public function update(Request $request, Quizze $quizze)
     {
         //
+        $request->validate([
+            'title' =>'required',
+            'description' =>'required',
+        ]);
+
+        $quizze->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        return response()->json([
+           'message' => 'quiz updated successfully',
+            'quiz' => $quizze
+        ]);
     }
 
     /**
@@ -61,5 +94,10 @@ class QuizzeController extends Controller
     public function destroy(Quizze $quizze)
     {
         //
+        $quizze->delete();
+        return response()->json([
+            'message' => 'quiz deleted successfully',
+             'quiz' => $quizze
+         ]);
     }
 }
