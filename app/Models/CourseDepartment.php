@@ -9,7 +9,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 class CourseDepartment extends Model implements Auditable
 {
-    use HasFactory, SoftDeletes, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable;
     protected $fillable = [
         'course_id', 'department_id',
     ];

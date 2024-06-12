@@ -9,7 +9,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 class Submission extends Model  implements Auditable
 {
-    use HasFactory, SoftDeletes, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
         'quiz_id', 'student_id', 'score',

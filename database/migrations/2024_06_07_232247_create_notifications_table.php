@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('data');
             $table->timestamp('read_at')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->softDeletes();
+            // $table->softDeletes();
             $table->timestamps();
         });
         

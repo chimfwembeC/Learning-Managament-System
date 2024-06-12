@@ -11,7 +11,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable  implements Auditable
 {
-    use HasFactory, Notifiable,SoftDeletes, \OwenIt\Auditing\Auditable, HasRoles;
+    use HasFactory, Notifiable,HasRoles, \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.

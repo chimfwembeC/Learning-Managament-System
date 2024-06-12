@@ -9,7 +9,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 class ForumPost extends Model implements Auditable
 {
-    use HasFactory, SoftDeletes, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable;
     protected $fillable = [
         'forum_id', 'user_id', 'content',
     ];

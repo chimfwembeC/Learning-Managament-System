@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-            $table->softDeletes();
+            // $table->softDeletes();
             $table->timestamps();
         });        
     }

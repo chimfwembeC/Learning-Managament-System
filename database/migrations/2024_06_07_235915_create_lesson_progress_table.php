@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('completed')->default(false);
             $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-            $table->softDeletes();
+            // $table->softDeletes();
             $table->timestamps();
         });        
     }
